@@ -29,5 +29,6 @@ public class WebTableTest extends Hooks {
         PacientiPage pacientiPage = new PacientiPage(getWebDriver());
         pacientiPage.adaugarePacient();
         pacientiPage.addNewEntry(webTableObject);
+
     }
 }
