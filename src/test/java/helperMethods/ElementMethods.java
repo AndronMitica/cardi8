@@ -32,7 +32,15 @@ public class ElementMethods {
     public void clickElement(WebElement element) {
         waitVisibleElement(element);
         element.click();
+    }
 
+    public void clickElementCustom(WebElement element) {
+                try {
+            Thread.sleep(500);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        element.click();
     }
 
     public void validateElementText(WebElement element, String expected) {
@@ -49,12 +57,6 @@ public class ElementMethods {
     public void fillElement(WebElement element, String value) {
         waitVisibleElement(element);
         element.sendKeys(value);
-//        try {
-//            Thread.sleep(500);
-//        } catch (InterruptedException e) {
-//            e.printStackTrace();
-//        }
-//        element.sendKeys(value);
     }
 
     public void refillElement(WebElement element, String value) {

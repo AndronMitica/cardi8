@@ -2,6 +2,7 @@ package pages;
 
 import loggerUtility.LoggerUtility;
 import objectData.WebTableObject;
+import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -9,9 +10,6 @@ import org.openqa.selenium.support.FindBy;
 
 public class PacientiPage extends BasePage {
 
-    public PacientiPage(WebDriver webDriver) {
-        super(webDriver);
-    }
     @FindBy(xpath = "//button[@type='button' and contains(@class, 'ant-btn-primary')]")
     private WebElement adaugaPacientButton;
     @FindBy(id = "nume")
@@ -52,10 +50,16 @@ public class PacientiPage extends BasePage {
     private WebElement alergiiField;
     @FindBy(id = "consultatii")
     private WebElement consultatiiField;
-    //    @FindBy(xpath = "(//div[@class='ant-form-item css-1vd04s3']//button[@type='submit'])[2]")
-    @FindBy(xpath = "//button[@type='submit' and span[contains(text(), 'Salvează')]]")
+    @FindBy(xpath = "//button[contains(@class, 'salvare_pacient')]/span")
     private WebElement salveazaButton;
 
+    @FindBy(xpath = "//div[@class = 'ant-form-item-explain-error']")
+    private WebElement errorMessage;
+    private WebElement modifyButton;
+
+    public PacientiPage(WebDriver webDriver) {
+        super(webDriver);
+    }
 
 
     public void adaugarePacient() {
@@ -117,7 +121,7 @@ public class PacientiPage extends BasePage {
         elementMethods.fillElement(locDeMuncaField, webTableObject.getLocDeMuncaValue());
         LoggerUtility.infoTest("The user add locDeMunca value");
 
-        elementMethods.scrollElementByPixel(0, 450);
+        elementMethods.scrollElementByPixel(0, 850);
         LoggerUtility.infoTest("The user scroll down the page");
 
         elementMethods.fillElement(istoricField, webTableObject.getIstoricValue());
@@ -129,10 +133,39 @@ public class PacientiPage extends BasePage {
         elementMethods.fillElement(consultatiiField, webTableObject.getConsultatiiValue());
         LoggerUtility.infoTest("The user add consultatii value");
 
-        webDriver.switchTo().activeElement().sendKeys(Keys.TAB);
+        salveazaButton.click();
+        salveazaButton.click();
+
+        webDriver.switchTo().activeElement().sendKeys(Keys.ENTER);
+
+        LoggerUtility.infoTest("The user clicks on salveazaButton");
+    }
+
+    public String getDataFillErrorMessage() {
+        elementMethods.printElementText(errorMessage);
+        return errorMessage.getText();
+    }
+
+    public void clickModifyButtonById(String id) {
+        elementMethods.scrollElementByPixel(0, 450);
+        modifyButton = webDriver.findElement(By.xpath(
+                "//tr[@data-row-key='" + id + "']//span[@aria-label='edit' and @class='anticon anticon-edit']"));
+        modifyButton.click();
+    }
+
+    public void editEntry(WebTableObject webTableObject) {
+
+        elementMethods.refillElement(numeField, webTableObject.getNumeValue());
+        LoggerUtility.infoTest("The user edit nume value");
+
+        elementMethods.refillElement(emailField, webTableObject.getEmailValue());
+        LoggerUtility.infoTest("The user edit email value");
 
         elementMethods.clickElement(salveazaButton);
-        LoggerUtility.infoTest("The user clicks on salveazaButton");
 
+    }
+
+    public void submit() {
+        salveazaButton.click();
     }
 }

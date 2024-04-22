@@ -17,14 +17,14 @@ public class HomePage extends BasePage{
     @FindBy(xpath = "//a[@href='/login_pacient']")
     private WebElement loginPacientField;
 
-    public void navidateToAutentificareCaSiMedic(){
+    public void navigateToAutentificareCaSiMedic(){
         elementMethods.scrollElementByPixel(0,450);
         LoggerUtility.infoTest("The user scroll down the page");
 
         elementMethods.clickElement(loginMedicField);
         LoggerUtility.infoTest("The user clicks on the loginMedicField element");
     }
-    public void navidateToAutentificareCaSiPacient(){
+    public void navigateToAutentificareCaSiPacient(){
         elementMethods.scrollElementByPixel(0, 450);
         LoggerUtility.infoTest("The user scroll down the page");
 

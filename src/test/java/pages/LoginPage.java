@@ -22,6 +22,9 @@ public class LoginPage extends BasePage{
     @FindBy(xpath = "//div[@class='ant-form-item-control-input-content']//button[@type='submit']")
     private WebElement submitButton;
 
+    @FindBy(xpath = "//div[@class= 'ant-form-item-explain-error']")
+    private WebElement errorMessage;
+
     public void insertCredentials(LoginObject loginObject) {
         elementMethods.clickElement(userNameField);
         LoggerUtility.infoTest("The user clicks on userNameField element");
@@ -37,4 +40,12 @@ public class LoginPage extends BasePage{
 
     }
 
+    public String getLoginErrorMessage() {
+        elementMethods.printElementText(errorMessage);
+        return errorMessage.getText();
+    }
+
+    public Boolean isUserNameFieldDisplayed() {
+        return userNameField.isDisplayed();
+    }
 }

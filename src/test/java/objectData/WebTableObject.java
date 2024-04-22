@@ -24,6 +24,7 @@ public class WebTableObject {
     private String alergiiValue;
     private String consultatiiValue;
 
+
     public WebTableObject(Map<String, String> testData) {
         prepareObject(testData);
     }
