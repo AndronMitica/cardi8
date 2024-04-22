@@ -134,9 +134,7 @@ public class PacientiPage extends BasePage {
         LoggerUtility.infoTest("The user add consultatii value");
 
         salveazaButton.click();
-        salveazaButton.click();
-
-        webDriver.switchTo().activeElement().sendKeys(Keys.ENTER);
+//        webDriver.switchTo().activeElement().sendKeys(Keys.ENTER);
 
         LoggerUtility.infoTest("The user clicks on salveazaButton");
     }

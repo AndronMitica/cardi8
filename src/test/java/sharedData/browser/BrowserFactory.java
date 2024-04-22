@@ -27,6 +27,10 @@ public class BrowserFactory {
                 FirefoxService firefoxService = new FirefoxService();
                 firefoxService.openBrowser(browserData);
                 return firefoxService.getWebDriver();
+            case "safari":
+                SafariService safariService = new SafariService();
+                safariService.openBrowser(browserData);
+                return  safariService.getWebDriver();
         }
         return null;
     }

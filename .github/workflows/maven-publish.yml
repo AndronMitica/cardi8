@@ -9,11 +9,11 @@ on:
       browser:
         description: 'Choose browser: chrome, firefox'
         required: true
-        default: 'chrome'
+        default: 'firefox'
       suite:
-        description: 'Choose suite: FeaturesSuite'
+        description: 'Choose suite: FeaturesSuite, RegressionSuite'
         required: true
-        default: 'FeaturesSuite'
+        default: 'RegressionSuite'
 jobs:
   build:
 
