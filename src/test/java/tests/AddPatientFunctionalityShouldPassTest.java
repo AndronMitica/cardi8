@@ -14,14 +14,14 @@ public class WebTableTest extends Hooks {
     @Test
     public void testMethod() {
 
-        PropertyUtility propertyUtility = new PropertyUtility("loginData");
+        PropertyUtility propertyUtility = new PropertyUtility("validMedicCredentialsData");
         LoginObject loginObject = new LoginObject(propertyUtility.getAllData());
 
         PropertyUtility propertyUtility1 = new PropertyUtility("webTableData");
         WebTableObject webTableObject = new WebTableObject(propertyUtility1.getAllData());
 
         HomePage homePage = new HomePage(getWebDriver());
-        homePage.navidateToAutentificareCaSiMedic();
+        homePage.navigateToAutentificareCaSiMedic();
 
         LoginPage loginPage = new LoginPage(getWebDriver());
         loginPage.insertCredentials(loginObject);
@@ -29,6 +29,5 @@ public class WebTableTest extends Hooks {
         PacientiPage pacientiPage = new PacientiPage(getWebDriver());
         pacientiPage.adaugarePacient();
         pacientiPage.addNewEntry(webTableObject);
-
     }
 }
