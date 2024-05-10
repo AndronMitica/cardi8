@@ -55,3 +55,7 @@ n
 >src/test/java/tests/LoginFunctionalityMedicShouldFailTest.java,e/2/e2188f40b8ae856f2fbd5df6316ce2cb4db91468
 u
 Esrc/test/java/tests/ModifyPatientDataFunctionalityShouldFailTest.java,1/a/1aa26ed8a68f11d265f4558354c5ada4e48d3b57
+c
+3src/test/java/sharedData/browser/SafariService.java,e/e/ee5b18ccdb426a15126cf386ba00bfa2337a6bc7
+J
+suites/RegressionSuite.xml,6/a/6a9e31b97ee5428587e594a6a3357d1084fc23da

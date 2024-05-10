@@ -11,20 +11,19 @@ import sharedData.Hooks;
 /**
  * Scenario: Unauthorized Access
  */
-public class LoginFunctionalityMedicShouldFailTest extends Hooks {
-
+public class LoginFunctionalityPatientShouldFailTest extends Hooks {
     @Test
     public void testMethod() {
         String expectedErrorMessage = "Numele de utilizator sau parola sunt incorecte.";
 
-        PropertyUtility propertyUtility = new PropertyUtility("invalidMedicCredentialsData");
+        PropertyUtility propertyUtility = new PropertyUtility("invalidPatientCredentialsData");
         LoginObject loginObject = new LoginObject(propertyUtility.getAllData());
 
         // Given the user navigates to the https://cardi8-web-app-design.vercel.app/
         HomePage homePage = new HomePage(getWebDriver());
 
-        // And the user clicks on "Autentificare ca medic" button
-        homePage.navigateToAutentificareCaSiMedic();
+        // And the user clicks on "Autentificare ca pacient" button
+        homePage.navigateToAutentificareCaSiPacient();
 
         // And the user enters invalid username
         // And the user clicks on the login button
@@ -34,6 +33,6 @@ public class LoginFunctionalityMedicShouldFailTest extends Hooks {
         // Then an error message should be displayed and the user should not be redirected to the care management profile page
         String errorMessage = loginPage.getLoginErrorMessage();
         Assert.assertEquals(errorMessage.equals(expectedErrorMessage),
-        "Error message is not expected.\nExpected: " + expectedErrorMessage + "\nActual: " + errorMessage);
+                "Error message is not as expected.\nExpected: " + expectedErrorMessage + "\nActual: " + errorMessage);
     }
 }

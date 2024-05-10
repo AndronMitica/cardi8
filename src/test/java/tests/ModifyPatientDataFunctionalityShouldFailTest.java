@@ -6,7 +6,7 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.HomePage;
 import pages.LoginPage;
-import pages.PacientiPage;
+import pages.ManagementProfilePage;
 import propertyUtility.PropertyUtility;
 import sharedData.Hooks;
 
@@ -39,13 +39,13 @@ public class ModifyPatientDataFunctionalityShouldFailTest extends Hooks {
         LoginPage loginPage = new LoginPage(getWebDriver());
         loginPage.insertCredentials(loginObject);
 
-        PacientiPage pacientiPage = new PacientiPage(getWebDriver());
-        pacientiPage.clickModifyButtonById("gy6Q9YiiRIXmJVvUfJaPEpSkYM92");
+        ManagementProfilePage managementProfilePage = new ManagementProfilePage(getWebDriver());
+        managementProfilePage.clickModifyButtonById("gy6Q9YiiRIXmJVvUfJaPEpSkYM92");
 
         webTableObject.setNumeValue("New");
         webTableObject.setEmailValue("email");
-        pacientiPage.editEntry(webTableObject);
-        pacientiPage.submit();
+        managementProfilePage.editEntry(webTableObject);
+        managementProfilePage.submit();
 
         String errorMessage = loginPage.getLoginErrorMessage();
         Assert.assertEquals(errorMessage.equals(expectedErrorMessage),

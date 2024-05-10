@@ -5,7 +5,7 @@ import objectData.WebTableObject;
 import org.testng.annotations.Test;
 import pages.HomePage;
 import pages.LoginPage;
-import pages.PacientiPage;
+import pages.ManagementProfilePage;
 import propertyUtility.PropertyUtility;
 import sharedData.Hooks;
 
@@ -29,16 +29,24 @@ public class AddPatientFunctionalityShouldPassTest extends Hooks {
         PropertyUtility propertyUtility1 = new PropertyUtility("validPatientData");
         WebTableObject webTableObject = new WebTableObject(propertyUtility1.getAllData());
 
+        // Given the user navigates to the https://cardi8-web-app-design.vercel.app/
         HomePage homePage = new HomePage(getWebDriver());
+
+        // And the user clicks on "Autentificare ca medic" button
         homePage.navigateToAutentificareCaSiMedic();
 
+        // And the user enters valid password
+        // And the user clicks on the login button
         LoginPage loginPage = new LoginPage(getWebDriver());
         loginPage.insertCredentials(loginObject);
 
-        PacientiPage pacientiPage = new PacientiPage(getWebDriver());
-        pacientiPage.adaugarePacient();
-        pacientiPage.addNewEntry(webTableObject);
+        ManagementProfilePage managementProfilePage = new ManagementProfilePage(getWebDriver());
+        // When the user clicks on the "Add Patient" button
+        managementProfilePage.adaugarePacient();
 
-        // TBD
+        // And fills out the patient form with valid information
+        managementProfilePage.addNewEntry(webTableObject);
+
+        // Then the new patient should be added and displayed on the patients enrolled page
     }
 }

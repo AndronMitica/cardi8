@@ -3,12 +3,13 @@ package pages;
 import loggerUtility.LoggerUtility;
 import objectData.WebTableObject;
 import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-public class PacientiPage extends BasePage {
+import java.util.List;
+
+public class ManagementProfilePage extends BasePage {
 
     @FindBy(xpath = "//button[@type='button' and contains(@class, 'ant-btn-primary')]")
     private WebElement adaugaPacientButton;
@@ -50,17 +51,20 @@ public class PacientiPage extends BasePage {
     private WebElement alergiiField;
     @FindBy(id = "consultatii")
     private WebElement consultatiiField;
+
     @FindBy(xpath = "//button[contains(@class, 'salvare_pacient')]/span")
     private WebElement salveazaButton;
 
     @FindBy(xpath = "//div[@class = 'ant-form-item-explain-error']")
     private WebElement errorMessage;
+
+
     private WebElement modifyButton;
 
-    public PacientiPage(WebDriver webDriver) {
+
+    public ManagementProfilePage(WebDriver webDriver) {
         super(webDriver);
     }
-
 
     public void adaugarePacient() {
         elementMethods.clickElement(adaugaPacientButton);
@@ -166,4 +170,31 @@ public class PacientiPage extends BasePage {
     public void submit() {
         salveazaButton.click();
     }
+
+    WebTableObject webTableObject;
+
+    @FindBy(xpath = "//tr[@class=ant-table-row ant-table-row-level-0]/td[3]")
+    private List<WebElement> cnpFields;
+
+
+    private List<WebElement> labelFields;
+//    WebElement labelField = getLabelField(cnpPosition);
+
+
+    public String checkCnp(WebTableObject webTableObject, List<WebElement> cnpList) {
+
+        Integer cnpPosition = -1;
+        for (int i = 0; i < cnpFields.size(); i++) {
+            if (cnpList.get(i).getText().equals(webTableObject.getCnpValue())) {
+                cnpPosition = i;
+
+                break;
+            }
+        }
+        return cnpPosition.toString();
+    }
+    public WebElement getLabelField(String cnpPosition) {
+        return webDriver.findElement(By.xpath("//*[@id=root]/div/div[3]/div/div/div/div/div/table/tbody/tr[" + cnpPosition + "]"));
+    }
+
 }

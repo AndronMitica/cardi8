@@ -8,24 +8,21 @@ import pages.LoginPage;
 import propertyUtility.PropertyUtility;
 import sharedData.Hooks;
 
-
 /**
  * Scenario: User successfully logs in with valid credentials
  */
 
-public class LoginFunctionalityMedicShouldPassTest extends Hooks {
-
+public class LoginFunctionalityPatientShouldPassTest extends Hooks {
     @Test
     public void testMethod() {
-
-        PropertyUtility propertyUtility = new PropertyUtility("validMedicCredentialsData");
+        PropertyUtility propertyUtility = new PropertyUtility("validPatientCredentialsData");
         LoginObject loginObject = new LoginObject(propertyUtility.getAllData());
 
         // Given the user navigates to the https://cardi8-web-app-design.vercel.app/
         HomePage homePage = new HomePage(getWebDriver());
 
-        // And the user clicks on "Autentificare ca medic" button
-        homePage.navigateToAutentificareCaSiMedic();
+        // And the user clicks on "Autentificare ca pacient" button
+        homePage.navigateToAutentificareCaSiPacient();
 
         // And the user enters valid username & password
         // And the user clicks on the login button
@@ -36,3 +33,4 @@ public class LoginFunctionalityMedicShouldPassTest extends Hooks {
         Assert.assertTrue(loginPage.isUserNameFieldDisplayed(), "User name field is not displayed after successful login.");
     }
 }
+

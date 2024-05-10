@@ -6,7 +6,7 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.HomePage;
 import pages.LoginPage;
-import pages.PacientiPage;
+import pages.ManagementProfilePage;
 import propertyUtility.PropertyUtility;
 import sharedData.Hooks;
 
@@ -36,9 +36,9 @@ public class AddPatientFunctionalityShouldFailTest extends Hooks{
             LoginPage loginPage = new LoginPage(getWebDriver());
             loginPage.insertCredentials(loginObject);
 
-            PacientiPage pacientiPage = new PacientiPage(getWebDriver());
-            pacientiPage.adaugarePacient();
-            pacientiPage.addNewEntry(webTableObject);
+            ManagementProfilePage managementProfilePage = new ManagementProfilePage(getWebDriver());
+            managementProfilePage.adaugarePacient();
+            managementProfilePage.addNewEntry(webTableObject);
 
             String errorMessage = loginPage.getLoginErrorMessage();
             Assert.assertEquals(errorMessage.equals(expectedErrorMessage),
