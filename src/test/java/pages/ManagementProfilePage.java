@@ -58,7 +58,6 @@ public class ManagementProfilePage extends BasePage {
     @FindBy(xpath = "//div[@class = 'ant-form-item-explain-error']")
     private WebElement errorMessage;
 
-
     private WebElement modifyButton;
 
 
@@ -171,30 +170,7 @@ public class ManagementProfilePage extends BasePage {
         salveazaButton.click();
     }
 
-    WebTableObject webTableObject;
-
-    @FindBy(xpath = "//tr[@class=ant-table-row ant-table-row-level-0]/td[3]")
-    private List<WebElement> cnpFields;
 
 
-    private List<WebElement> labelFields;
-//    WebElement labelField = getLabelField(cnpPosition);
-
-
-    public String checkCnp(WebTableObject webTableObject, List<WebElement> cnpList) {
-
-        Integer cnpPosition = -1;
-        for (int i = 0; i < cnpFields.size(); i++) {
-            if (cnpList.get(i).getText().equals(webTableObject.getCnpValue())) {
-                cnpPosition = i;
-
-                break;
-            }
-        }
-        return cnpPosition.toString();
-    }
-    public WebElement getLabelField(String cnpPosition) {
-        return webDriver.findElement(By.xpath("//*[@id=root]/div/div[3]/div/div/div/div/div/table/tbody/tr[" + cnpPosition + "]"));
-    }
 
 }
