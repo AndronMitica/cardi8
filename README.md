@@ -1,6 +1,7 @@
 # Cardi8
 
-![Cardi8 Logo](assets/LogoCardi8.png)
+![LogoCardi8](https://github.com/AndronMitica/cardi8/assets/99435537/3001af90-14f0-42c0-83fe-dc5cf5007538)
+
 
 ## Overview
 Cardi8 is an application designed to monitor a patient's health status. It works with a device that captures vital information such as EKG, pulse, and ambient temperature. This project emphasizes testing the main functionalities of the web application.
