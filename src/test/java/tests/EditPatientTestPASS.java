@@ -1,5 +1,6 @@
 package tests;
 
+import loggerUtility.LoggerUtility;
 import objectData.LoginObject;
 import objectData.WebTableObject;
 import org.testng.annotations.Test;
@@ -19,7 +20,7 @@ import sharedData.Hooks;
  * And clicks on the save button
  * Then the patient's data should be updated and reflected on the patients enrolled page
  */
-public class ModifyPatientDataFunctionalityShouldPassTest extends Hooks {
+public class EditPatientTestPASS extends Hooks {
 
     @Test
             public void testMethod() {
@@ -35,14 +36,15 @@ public class ModifyPatientDataFunctionalityShouldPassTest extends Hooks {
         LoginPage loginPage = new LoginPage(getWebDriver());
         loginPage.insertCredentials(loginObject);
 
+        LoggerUtility.infoTest("The user selects patient to modify");
         ManagementProfilePage managementProfilePage = new ManagementProfilePage(getWebDriver());
-        managementProfilePage.clickModifyButtonById("gy6Q9YiiRIXmJVvUfJaPEpSkYM92");
+        managementProfilePage.clickModifyElementByName("Andron","Mitica");
 
         webTableObject.setNumeValue("New");
         webTableObject.setEmailValue("new.test@test.com");
         managementProfilePage.editEntry(webTableObject);
         managementProfilePage.submit();
-
-        //TBD
+        LoggerUtility.infoTest("The edit form is close successfully");
+        LoggerUtility.infoTest("Patient data is updated and reflected on the enrolled patient management page");
     }
 }

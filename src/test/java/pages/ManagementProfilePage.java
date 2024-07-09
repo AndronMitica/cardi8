@@ -2,7 +2,6 @@ package pages;
 
 import loggerUtility.LoggerUtility;
 import objectData.WebTableObject;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -55,11 +54,14 @@ public class ManagementProfilePage extends BasePage {
     @FindBy(xpath = "//button[contains(@class, 'salvare_pacient')]/span")
     private WebElement salveazaButton;
 
-    @FindBy(xpath = "//div[@class = 'ant-form-item-explain-error']")
-    private WebElement errorMessage;
+    @FindBy(xpath = "/html/body/div[2]/div/div[2]/div/div[2]/div/div[2]/form/div[4]/div[1]/div/div[1]/div[2]/div[2]/div[1]/div")
+    public WebElement errorMessage;
 
-    private WebElement modifyButton;
+    @FindBy(xpath = "//button[contains(@class, 'ant-btn') and contains(@class, 'css-1vd04s3') and contains(@class, 'ant-btn-round') and contains(@class, 'ant-btn-default') and contains(@class, 'action_button') and .//span[@aria-label='edit']]")
+    public List<WebElement> modifyButtonFields;
 
+    @FindBy(xpath = "//*[@id=\"root\"]/div/div[3]/div/div/div/div/div/table/tbody/tr/td[1]")
+    private List<WebElement> nameValues;
 
     public ManagementProfilePage(WebDriver webDriver) {
         super(webDriver);
@@ -74,103 +76,134 @@ public class ManagementProfilePage extends BasePage {
         elementMethods.clickElement(numeField);
 
         elementMethods.fillElement(numeField, webTableObject.getNumeValue());
-        LoggerUtility.infoTest("The user add nume value");
+        LoggerUtility.infoTest("The user adds nume value");
 
         elementMethods.fillElement(prenumeField, webTableObject.getPrenumeValue());
-        LoggerUtility.infoTest("The user add prenume value");
+        LoggerUtility.infoTest("The user adds prenume value");
 
         elementMethods.fillElement(varstaField, webTableObject.getVarstaValue());
-        LoggerUtility.infoTest("The user add varsta value");
+        LoggerUtility.infoTest("The user adds varsta value");
 
         elementMethods.fillElement(cnpField, webTableObject.getCnpValue());
-        LoggerUtility.infoTest("The user add cnp value");
+        LoggerUtility.infoTest("The user adds cnp value");
 
         elementMethods.scrollElementByPixel(0, 350);
-        LoggerUtility.infoTest("The user scroll down the page");
+        LoggerUtility.infoTest("The user scrolls down the page");
 
         elementMethods.fillElement(stradaField, webTableObject.getStradaValue());
-        LoggerUtility.infoTest("The user add strada value");
+        LoggerUtility.infoTest("The user adds strada value");
 
         elementMethods.fillElement(numarField, webTableObject.getNumarValue());
-        LoggerUtility.infoTest("The user add numar value");
+        LoggerUtility.infoTest("The user adds numar value");
 
         elementMethods.fillElement(blocField, webTableObject.getBlocValue());
-        LoggerUtility.infoTest("The user add bloc value");
+        LoggerUtility.infoTest("The user adds bloc value");
 
         elementMethods.fillElement(etajField, webTableObject.getEtajValue());
-        LoggerUtility.infoTest("The user add etaj value");
+        LoggerUtility.infoTest("The user adds etaj value");
 
         elementMethods.fillElement(apartamentField, webTableObject.getApartamentValue());
-        LoggerUtility.infoTest("The user add apartament value");
+        LoggerUtility.infoTest("The user adds apartament value");
 
         elementMethods.fillElement(orasField, webTableObject.getOrasValue());
-        LoggerUtility.infoTest("The user add oras value");
+        LoggerUtility.infoTest("The user adds oras value");
 
         elementMethods.fillElement(judetField, webTableObject.getJudetValue());
-        LoggerUtility.infoTest("The user add judet value");
+        LoggerUtility.infoTest("The user adds judet value");
 
         elementMethods.fillElement(codPostalField, webTableObject.getCodPostalValue());
-        LoggerUtility.infoTest("The user add codPostal value");
+        LoggerUtility.infoTest("The user adds codPostal value");
 
         elementMethods.fillElement(telefonField, webTableObject.getTelefonValue());
-        LoggerUtility.infoTest("The user add telefon value");
+        LoggerUtility.infoTest("The user adds telefon value");
 
         elementMethods.fillElement(emailField, webTableObject.getEmailValue());
-        LoggerUtility.infoTest("The user add email value");
+        LoggerUtility.infoTest("The user adds email value");
 
         elementMethods.fillElement(profesieField, webTableObject.getProfesieValue());
-        LoggerUtility.infoTest("The user add profesie value");
+        LoggerUtility.infoTest("The user adds profesie value");
 
         elementMethods.fillElement(locDeMuncaField, webTableObject.getLocDeMuncaValue());
-        LoggerUtility.infoTest("The user add locDeMunca value");
+        LoggerUtility.infoTest("The user adds locDeMunca value");
 
         elementMethods.scrollElementByPixel(0, 850);
-        LoggerUtility.infoTest("The user scroll down the page");
+        LoggerUtility.infoTest("The user scrolls down the page");
 
         elementMethods.fillElement(istoricField, webTableObject.getIstoricValue());
-        LoggerUtility.infoTest("The user add istoric value");
+        LoggerUtility.infoTest("The user adds istoric value");
 
         elementMethods.fillElement(alergiiField, webTableObject.getAlergiiValue());
-        LoggerUtility.infoTest("The user add alergii value");
+        LoggerUtility.infoTest("The user adds alergii value");
 
         elementMethods.fillElement(consultatiiField, webTableObject.getConsultatiiValue());
-        LoggerUtility.infoTest("The user add consultatii value");
+        LoggerUtility.infoTest("The user adds consultatii value");
 
         salveazaButton.click();
-//        webDriver.switchTo().activeElement().sendKeys(Keys.ENTER);
-
+        LoggerUtility.infoTest("The user fills the form with valid information");
         LoggerUtility.infoTest("The user clicks on salveazaButton");
     }
+
 
     public String getDataFillErrorMessage() {
         elementMethods.printElementText(errorMessage);
         return errorMessage.getText();
     }
 
-    public void clickModifyButtonById(String id) {
+    //    public void clickModifyElementByName(String numeValue, String prenumeValue) {
+//        elementMethods.scrollElementByPixel(0, 450);
+//        for (Integer i = 0; i < nameValues.size(); i++) {
+//            if (nameValues.get(i).getText().equals(numeValue + " " + prenumeValue)) {
+//                modifyButtonFields.get(i).click();
+//                LoggerUtility.infoTest("The user click on modify button");
+//                break;
+//            }
+//        }
+//    }
+    public void clickModifyElementByName(String numeValue, String prenumeValue) {
         elementMethods.scrollElementByPixel(0, 450);
-        modifyButton = webDriver.findElement(By.xpath(
-                "//tr[@data-row-key='" + id + "']//span[@aria-label='edit' and @class='anticon anticon-edit']"));
-        modifyButton.click();
+
+        for (int i = 1; i < nameValues.size(); i++) {
+            // Extrage textul din elementul de nume la indexul i
+            String fullName = nameValues.get(i).getText();
+
+            // Verifică dacă numele complet se potrivește cu numele și prenumele specificate
+            if (fullName.equals(numeValue + " " + prenumeValue)) {
+                // Faceți clic pe butonul de modificare corespunzător
+                modifyButtonFields.get(i).click();
+                LoggerUtility.infoTest("The user clicked on modify button for " + fullName);
+                break; // Ieșiți din buclă după ce ați găsit corespondența
+            }
+        }
     }
+//    public void clickModifyElementByName(String numeValue, String prenumeValue) {
+//        elementMethods.scrollElementByPixel(0, 450);
+//        String fullName = numeValue + " " + prenumeValue;
+//
+//        for (int i = 0; i < nameValues.size(); i++) {
+//            WebElement elementValue = nameValues.get(i);
+//            if (elementValue.getText().equals(fullName)) {
+//                modifyButtonFields.get(i).click();
+//                LoggerUtility.infoTest("Clicked modify button for: " + fullName);
+//                break;
+//            }
+//        }
+//    }
 
     public void editEntry(WebTableObject webTableObject) {
 
         elementMethods.refillElement(numeField, webTableObject.getNumeValue());
-        LoggerUtility.infoTest("The user edit nume value");
+        LoggerUtility.infoTest("The user edits nume value");
 
-        elementMethods.refillElement(emailField, webTableObject.getEmailValue());
-        LoggerUtility.infoTest("The user edit email value");
+        elementMethods.refillElement(orasField, webTableObject.getOrasValue());
+        LoggerUtility.infoTest("The user edits email value");
+
+        LoggerUtility.infoTest("The user modifies patient information");
 
         elementMethods.clickElement(salveazaButton);
-
+        LoggerUtility.infoTest("The user click on salveazaButton");
     }
 
     public void submit() {
         salveazaButton.click();
     }
-
-
-
-
 }

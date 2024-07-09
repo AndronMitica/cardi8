@@ -19,14 +19,14 @@ public class HomePage extends BasePage{
 
     public void navigateToAutentificareCaSiMedic(){
         elementMethods.scrollElementByPixel(0,450);
-        LoggerUtility.infoTest("The user scroll down the page");
+        LoggerUtility.infoTest("The user scrolls down the page");
 
         elementMethods.clickElement(loginMedicField);
-        LoggerUtility.infoTest("The user clicks on the loginMedicField element");
+        LoggerUtility.infoTest("The user clicks on loginMedicField element");
     }
     public void navigateToAutentificareCaSiPacient(){
         elementMethods.scrollElementByPixel(0, 450);
-        LoggerUtility.infoTest("The user scroll down the page");
+        LoggerUtility.infoTest("The user scrolls down the page");
 
         elementMethods.clickElement(loginPacientField);
         LoggerUtility.infoTest("The user clicks on the loginPacientField element");

@@ -1,5 +1,6 @@
 package tests;
 
+import loggerUtility.LoggerUtility;
 import objectData.LoginObject;
 import org.testng.Assert;
 import org.testng.annotations.Test;
@@ -11,7 +12,7 @@ import sharedData.Hooks;
 /**
  * Scenario: Unauthorized Access
  */
-public class LoginFunctionalityMedicShouldFailTest extends Hooks {
+public class AuthenticationAsDoctorTestFAIL extends Hooks {
 
     @Test
     public void testMethod() {
@@ -20,20 +21,16 @@ public class LoginFunctionalityMedicShouldFailTest extends Hooks {
         PropertyUtility propertyUtility = new PropertyUtility("invalidMedicCredentialsData");
         LoginObject loginObject = new LoginObject(propertyUtility.getAllData());
 
-        // Given the user navigates to the https://cardi8-web-app-design.vercel.app/
         HomePage homePage = new HomePage(getWebDriver());
 
-        // And the user clicks on "Autentificare ca medic" button
         homePage.navigateToAutentificareCaSiMedic();
 
-        // And the user enters invalid username
-        // And the user clicks on the login button
         LoginPage loginPage = new LoginPage(getWebDriver());
         loginPage.insertCredentials(loginObject);
 
-        // Then an error message should be displayed and the user should not be redirected to the care management profile page
+        LoggerUtility.infoTest("Error message: ");
         String errorMessage = loginPage.getLoginErrorMessage();
-        Assert.assertEquals(errorMessage.equals(expectedErrorMessage),
+        Assert.assertTrue(errorMessage.equals(expectedErrorMessage),
         "Error message is not expected.\nExpected: " + expectedErrorMessage + "\nActual: " + errorMessage);
     }
 }

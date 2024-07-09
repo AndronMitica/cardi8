@@ -17,5 +17,6 @@ public class SharedData {
 
     public WebDriver getWebDriver() {
         return webDriver;
+
     }
 }

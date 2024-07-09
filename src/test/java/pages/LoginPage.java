@@ -29,6 +29,7 @@ public class LoginPage extends BasePage{
         elementMethods.clickElement(userNameField);
         LoggerUtility.infoTest("The user clicks on userNameField element");
 
+
         elementMethods.fillElement(userNameField,loginObject.getUsernameValue());
         LoggerUtility.infoTest("The user fills the userNameField");
 
@@ -37,7 +38,6 @@ public class LoginPage extends BasePage{
 
         submitButton.click();
         LoggerUtility.infoTest("The user clicks on submitButton element");
-
     }
 
     public String getLoginErrorMessage() {

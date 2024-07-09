@@ -1,5 +1,6 @@
 package tests;
 
+import loggerUtility.LoggerUtility;
 import objectData.LoginObject;
 import objectData.WebTableObject;
 import org.testng.Assert;
@@ -18,7 +19,7 @@ import sharedData.Hooks;
  * And clicks on the submit button
  * Then appropriate validation errors should be displayed
  */
-public class AddPatientFunctionalityShouldFailTest extends Hooks{
+public class AddPatientTestFAIL extends Hooks{
 
         @Test
         public void testMethod() {
@@ -40,8 +41,9 @@ public class AddPatientFunctionalityShouldFailTest extends Hooks{
             managementProfilePage.adaugarePacient();
             managementProfilePage.addNewEntry(webTableObject);
 
+            LoggerUtility.infoTest("The patient information are not saved in the system and the error message is displayed");
             String errorMessage = loginPage.getLoginErrorMessage();
-            Assert.assertEquals(errorMessage.equals(expectedErrorMessage),
+            Assert.assertTrue(errorMessage.equals(expectedErrorMessage),
                     "Error message is not expected.\nExpected: " + expectedErrorMessage + "\nActual: " + errorMessage);
         }
     }
