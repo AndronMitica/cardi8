@@ -153,15 +153,11 @@ public class ManagementProfilePage extends BasePage {
         elementMethods.scrollElementByPixel(0, 450);
 
         for (int i = 1; i < nameValues.size(); i++) {
-            // Extrage textul din elementul de nume la indexul i
             String fullName = nameValues.get(i).getText();
-
-            // Verifică dacă numele complet se potrivește cu numele și prenumele specificate
             if (fullName.equals(numeValue + " " + prenumeValue)) {
-                // Faceți clic pe butonul de modificare corespunzător
                 modifyButtonFields.get(i).click();
                 LoggerUtility.infoTest("The user clicked on modify button for " + fullName);
-                break; // Ieșiți din buclă după ce ați găsit corespondența
+                break;
             }
         }
     }
