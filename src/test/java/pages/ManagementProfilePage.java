@@ -149,16 +149,6 @@ public class ManagementProfilePage extends BasePage {
         return errorMessage.getText();
     }
 
-    //    public void clickModifyElementByName(String numeValue, String prenumeValue) {
-//        elementMethods.scrollElementByPixel(0, 450);
-//        for (Integer i = 0; i < nameValues.size(); i++) {
-//            if (nameValues.get(i).getText().equals(numeValue + " " + prenumeValue)) {
-//                modifyButtonFields.get(i).click();
-//                LoggerUtility.infoTest("The user click on modify button");
-//                break;
-//            }
-//        }
-//    }
     public void clickModifyElementByName(String numeValue, String prenumeValue) {
         elementMethods.scrollElementByPixel(0, 450);
 
@@ -175,20 +165,6 @@ public class ManagementProfilePage extends BasePage {
             }
         }
     }
-//    public void clickModifyElementByName(String numeValue, String prenumeValue) {
-//        elementMethods.scrollElementByPixel(0, 450);
-//        String fullName = numeValue + " " + prenumeValue;
-//
-//        for (int i = 0; i < nameValues.size(); i++) {
-//            WebElement elementValue = nameValues.get(i);
-//            if (elementValue.getText().equals(fullName)) {
-//                modifyButtonFields.get(i).click();
-//                LoggerUtility.infoTest("Clicked modify button for: " + fullName);
-//                break;
-//            }
-//        }
-//    }
-
     public void editEntry(WebTableObject webTableObject) {
 
         elementMethods.refillElement(numeField, webTableObject.getNumeValue());
